@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Playwright generated files
+playwright-report/
+test-results/
+blob-report/
+
+# Environment variables
+.env
+.env.*
+
+# Authentication state
+playwright/.auth/
+
+# Operating system
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
