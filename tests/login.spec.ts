@@ -1,25 +1,25 @@
 import { test, expect } from '@playwright/test';
+import { LoginPage } from '../pages/login.page';
 
 test.describe('SauceDemo Login', () => {
+  let loginPage: LoginPage;
+
   test.beforeEach(async ({ page }) => {
-    await page.goto('/');
+    loginPage = new LoginPage(page);
+    await loginPage.goto();
   });
 
   test('should allow a valid user to log in', async ({ page }) => {
-    await page.getByTestId('username').fill('standard_user');
-    await page.getByTestId('password').fill('secret_sauce');
-    await page.getByTestId('login-button').click();
+    await loginPage.login('standard_user', 'secret_sauce');
 
     await expect(page).toHaveURL(/inventory/);
-    await expect(page.getByText('Products')).toBeVisible();
+    await expect(loginPage.productsTitle).toBeVisible();
   });
 
   test('should display an error for invalid credentials', async ({ page }) => {
-    await page.getByTestId('username').fill('invalid_user');
-    await page.getByTestId('password').fill('invalid_password');
-    await page.getByTestId('login-button').click();
+    await loginPage.login('invalid_user', 'invalid_password');
 
-    await expect(page.getByTestId('error')).toContainText(
+    await expect(loginPage.errorMessage).toContainText(
       'Username and password do not match'
     );
 
