@@ -56,7 +56,7 @@ Install:
 Clone the repository and install dependencies:
 
 ```bash
-git clone REPOSITORY_URL
+git clone https://github.com/HudaHussin/playwright-automation.git
 cd playwright-automation
 npm ci
 npx playwright install
