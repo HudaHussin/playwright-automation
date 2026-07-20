@@ -34,7 +34,7 @@ test.describe('SauceDemo Checkout', () => {
     });
 
     await test.step('Enter checkout information', async () => {
-      await cartPage.checkoutButton.click();
+      await cartPage.proceedToCheckout();
 
       await expect(page).toHaveURL(/checkout-step-one/);
 

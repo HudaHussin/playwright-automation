@@ -14,4 +14,8 @@ export class CartPage {
   getProduct(productName: string): Locator {
     return this.cartItems.filter({ hasText: productName });
   }
+
+  async proceedToCheckout(): Promise<void> {
+    await this.checkoutButton.click();
+  }
 }
