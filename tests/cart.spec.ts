@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/login.page';
 import { InventoryPage } from '../pages/inventory.page';
 import { CartPage } from '../pages/cart.page';
+import { users } from '../test-data/users';
 
 test.describe('SauceDemo Shopping Cart', () => {
   test('should allow a user to add a product to the cart', async ({ page }) => {
@@ -12,7 +13,10 @@ test.describe('SauceDemo Shopping Cart', () => {
     const productName = 'Sauce Labs Backpack';
 
     await loginPage.goto();
-    await loginPage.login('standard_user', 'secret_sauce');
+    await loginPage.login(
+      users.standard.username,
+      users.standard.password
+    );
 
     await expect(page).toHaveURL(/inventory/);
 

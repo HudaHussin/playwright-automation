@@ -3,6 +3,7 @@ import { LoginPage } from '../pages/login.page';
 import { InventoryPage } from '../pages/inventory.page';
 import { CartPage } from '../pages/cart.page';
 import { CheckoutPage } from '../pages/checkout.page';
+import { users } from '../test-data/users';
 
 test.describe('SauceDemo Checkout', () => {
   test('should complete an order successfully', async ({ page }) => {
@@ -15,7 +16,10 @@ test.describe('SauceDemo Checkout', () => {
 
     await test.step('Log in as a valid user', async () => {
       await loginPage.goto();
-      await loginPage.login('standard_user', 'secret_sauce');
+      await loginPage.login(
+        users.standard.username,
+        users.standard.password
+      );
 
       await expect(page).toHaveURL(/inventory/);
     });
