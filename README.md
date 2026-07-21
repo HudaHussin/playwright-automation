@@ -2,20 +2,44 @@
 
 End-to-end test automation framework built with Playwright and TypeScript.
 
-This project demonstrates cross-browser UI automation for the SauceDemo e-commerce application using maintainable Page Object Model design, centralized test data and continuous integration with GitHub Actions.
+This project demonstrates cross-browser UI automation for the SauceDemo e-commerce application using Page Object Model, custom Playwright fixtures, centralized test data, data-driven testing and continuous integration with GitHub Actions.
 
 ## Test Coverage
 
-| Feature | Scenario |
-|---|---|
-| Login | Verify that the login form is displayed |
-| Login | Login with valid credentials |
-| Login | Display error for invalid credentials |
-| Login | Display error when the username is empty |
-| Login | Display error when the password is empty |
-| Login | Display error for a locked-out user |
-| Shopping Cart | Add and verify a product |
-| Checkout | Complete an end-to-end order |
+| Feature | Scenario | Test Type |
+|---|---|---|
+| Login | Verify that the login form is displayed and usable | Positive |
+| Login | Login with valid credentials | Positive |
+| Login | Display error for invalid credentials | Negative |
+| Login | Display error when the username is empty | Negative |
+| Login | Display error when the password is empty | Negative |
+| Login | Display error for a locked-out user | Negative |
+| Shopping Cart | Add and verify a product in the cart | Positive |
+| Checkout | Complete an end-to-end order | Positive |
+| Checkout | Display error when the first name is empty | Negative |
+| Checkout | Display error when the last name is empty | Negative |
+| Checkout | Display error when the postal code is empty | Negative |
+
+The suite contains:
+
+```text
+11 test scenarios
+× 3 browsers
+= 33 cross-browser test executions
+```
+
+## Framework Features
+
+- End-to-end UI testing with Playwright
+- TypeScript for type safety
+- Page Object Model for reusable locators and actions
+- Custom fixtures for automatic Page Object setup
+- Centralized test data
+- Data-driven positive and negative testing
+- Gherkin feature documentation
+- Cross-browser testing
+- Playwright HTML reporting
+- Continuous integration with GitHub Actions
 
 ## Tech Stack
 
@@ -23,7 +47,9 @@ This project demonstrates cross-browser UI automation for the SauceDemo e-commer
 - TypeScript
 - Node.js
 - Page Object Model
-- Centralized Test Data
+- Custom Playwright Fixtures
+- Data-Driven Testing
+- Gherkin
 - GitHub Actions
 - Chromium, Firefox and WebKit
 
@@ -34,12 +60,21 @@ playwright-automation/
 ├── .github/
 │   └── workflows/
 │       └── playwright.yml
+├── features/
+│   ├── cart.feature
+│   ├── checkout.feature
+│   └── login.feature
+├── fixtures/
+│   └── pages.fixture.ts
 ├── pages/
 │   ├── cart.page.ts
 │   ├── checkout.page.ts
 │   ├── inventory.page.ts
 │   └── login.page.ts
 ├── test-data/
+│   ├── checkout-cases.ts
+│   ├── customers.ts
+│   ├── login-cases.ts
 │   └── users.ts
 ├── tests/
 │   ├── cart.spec.ts
@@ -48,6 +83,18 @@ playwright-automation/
 ├── playwright.config.ts
 ├── package.json
 └── README.md
+```
+
+## How the Framework Works
+
+```mermaid
+flowchart TD
+    A["Feature files<br/>Business scenarios"] --> B["Spec files<br/>Test logic"]
+    C["Test data<br/>Inputs and expected results"] --> B
+    D["Fixtures<br/>Prepare Page Objects"] --> B
+    B --> E["Page Objects<br/>Locators and actions"]
+    E --> F["SauceDemo application"]
+    B --> G["Assertions and test results"]
 ```
 
 ## Prerequisites
@@ -75,6 +122,12 @@ Run all tests across Chromium, Firefox and WebKit:
 
 ```bash
 npm test
+```
+
+Run Chromium only:
+
+```bash
+npx playwright test --project=chromium
 ```
 
 Run tests in headed mode:

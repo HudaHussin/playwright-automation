@@ -10,12 +10,9 @@ Feature: SauceDemo Shopping Cart
     And the inventory page is displayed
 
   @smoke @positive
-  Scenario: Add a product to the shopping cart
+  Scenario: Add and verify a product in the shopping cart
     When the user adds "Sauce Labs Backpack" to the cart
     Then the shopping cart badge should display "1"
-
-  @regression @positive
-  Scenario: Verify an added product in the shopping cart
-    When the user adds "Sauce Labs Backpack" to the cart
-    And the user opens the shopping cart
-    Then "Sauce Labs Backpack" should be displayed in the cart
+    When the user opens the shopping cart
+    Then the cart page should be displayed
+    And "Sauce Labs Backpack" should be displayed in the cart
