@@ -14,7 +14,7 @@ test.describe('SauceDemo Login', () => {
     await loginPage.login(
       users.standard.username,
       users.standard.password
-);
+    );
 
     await expect(page).toHaveURL(/inventory/);
     await expect(loginPage.productsTitle).toBeVisible();
@@ -28,6 +28,39 @@ test.describe('SauceDemo Login', () => {
 
     await expect(loginPage.errorMessage).toContainText(
       'Username and password do not match'
+    );
+
+    await expect(page).toHaveURL('/');
+  });
+
+  test('should require a username', async ({ page }) => {
+    await loginPage.login('', users.standard.password);
+
+    await expect(loginPage.errorMessage).toContainText(
+      'Username is required'
+    );
+
+    await expect(page).toHaveURL('/');
+  });
+
+  test('should require a password', async ({ page }) => {
+    await loginPage.login(users.standard.username, '');
+
+    await expect(loginPage.errorMessage).toContainText(
+      'Password is required'
+    );
+
+    await expect(page).toHaveURL('/');
+  });
+
+  test('should prevent a locked-out user from logging in', async ({ page }) => {
+    await loginPage.login(
+      users.lockedOut.username,
+      users.lockedOut.password
+    );
+
+    await expect(loginPage.errorMessage).toContainText(
+      'Sorry, this user has been locked out'
     );
 
     await expect(page).toHaveURL('/');

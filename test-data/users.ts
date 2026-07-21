@@ -8,4 +8,9 @@ export const users = {
     username: 'invalid_user',
     password: 'invalid_password',
   },
+
+  lockedOut: {
+    username: 'locked_out_user',
+    password: 'secret_sauce',
+  },
 };
