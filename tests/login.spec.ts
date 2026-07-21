@@ -10,6 +10,19 @@ test.describe('SauceDemo Login', () => {
     await loginPage.goto();
   });
 
+  test('should display a usable login form', async () => {
+    await expect(loginPage.usernameInput).toBeVisible();
+    await expect(loginPage.usernameInput).toBeEditable();
+
+    await expect(loginPage.passwordInput).toHaveAttribute(
+      'type',
+      'password'
+    );
+
+    await expect(loginPage.loginButton).toBeVisible();
+    await expect(loginPage.loginButton).toBeEnabled();
+  });
+
   test('should allow a valid user to log in', async ({ page }) => {
     await loginPage.login(
       users.standard.username,

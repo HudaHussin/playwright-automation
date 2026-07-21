@@ -9,13 +9,17 @@ export class LoginPage {
   readonly productsTitle: Locator;
 
   constructor(page: Page) {
-    this.page = page;
-    this.usernameInput = page.getByTestId('username');
-    this.passwordInput = page.getByTestId('password');
-    this.loginButton = page.getByTestId('login-button');
-    this.errorMessage = page.getByTestId('error');
-    this.productsTitle = page.getByText('Products');
-  }
+  this.page = page;
+  this.usernameInput = page.getByPlaceholder('Username');
+  this.passwordInput = page.getByPlaceholder('Password');
+  this.loginButton = page.getByRole('button', {
+    name: 'Login',
+  });
+  this.errorMessage = page.getByTestId('error');
+  this.productsTitle = page.getByText('Products', {
+    exact: true,
+  });
+}
 
   async goto(): Promise<void> {
     await this.page.goto('/');
