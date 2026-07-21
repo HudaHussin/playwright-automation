@@ -2,14 +2,18 @@
 
 End-to-end test automation framework built with Playwright and TypeScript.
 
-This project demonstrates cross-browser UI automation for the SauceDemo e-commerce application using maintainable Page Object Model design and continuous integration with GitHub Actions.
+This project demonstrates cross-browser UI automation for the SauceDemo e-commerce application using maintainable Page Object Model design, centralized test data and continuous integration with GitHub Actions.
 
 ## Test Coverage
 
 | Feature | Scenario |
 |---|---|
+| Login | Verify that the login form is displayed |
 | Login | Login with valid credentials |
 | Login | Display error for invalid credentials |
+| Login | Display error when the username is empty |
+| Login | Display error when the password is empty |
+| Login | Display error for a locked-out user |
 | Shopping Cart | Add and verify a product |
 | Checkout | Complete an end-to-end order |
 
@@ -19,6 +23,7 @@ This project demonstrates cross-browser UI automation for the SauceDemo e-commer
 - TypeScript
 - Node.js
 - Page Object Model
+- Centralized Test Data
 - GitHub Actions
 - Chromium, Firefox and WebKit
 
@@ -34,6 +39,8 @@ playwright-automation/
 │   ├── checkout.page.ts
 │   ├── inventory.page.ts
 │   └── login.page.ts
+├── test-data/
+│   └── users.ts
 ├── tests/
 │   ├── cart.spec.ts
 │   ├── checkout.spec.ts
