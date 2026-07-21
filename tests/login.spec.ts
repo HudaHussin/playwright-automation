@@ -1,16 +1,13 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/login.page';
+import { test, expect } from '../fixtures/pages.fixture';
+import { invalidLoginCases } from '../test-data/login-cases';
 import { users } from '../test-data/users';
 
 test.describe('SauceDemo Login', () => {
-  let loginPage: LoginPage;
-
-  test.beforeEach(async ({ page }) => {
-    loginPage = new LoginPage(page);
+  test.beforeEach(async ({ loginPage }) => {
     await loginPage.goto();
   });
 
-  test('should display a usable login form', async () => {
+  test('should display a usable login form', async ({ loginPage }) => {
     await expect(loginPage.usernameInput).toBeVisible();
     await expect(loginPage.usernameInput).toBeEditable();
 
@@ -23,7 +20,10 @@ test.describe('SauceDemo Login', () => {
     await expect(loginPage.loginButton).toBeEnabled();
   });
 
-  test('should allow a valid user to log in', async ({ page }) => {
+  test('should allow a valid user to log in', async ({
+    page,
+    loginPage,
+  }) => {
     await loginPage.login(
       users.standard.username,
       users.standard.password
@@ -33,49 +33,17 @@ test.describe('SauceDemo Login', () => {
     await expect(loginPage.productsTitle).toBeVisible();
   });
 
-  test('should display an error for invalid credentials', async ({ page }) => {
-    await loginPage.login(
-      users.invalid.username,
-      users.invalid.password
-    );
+  invalidLoginCases.forEach(
+    ({ name, username, password, expectedError }) => {
+      test(`should display the correct error for ${name}`, async ({
+        page,
+        loginPage,
+      }) => {
+        await loginPage.login(username, password);
 
-    await expect(loginPage.errorMessage).toContainText(
-      'Username and password do not match'
-    );
-
-    await expect(page).toHaveURL('/');
-  });
-
-  test('should require a username', async ({ page }) => {
-    await loginPage.login('', users.standard.password);
-
-    await expect(loginPage.errorMessage).toContainText(
-      'Username is required'
-    );
-
-    await expect(page).toHaveURL('/');
-  });
-
-  test('should require a password', async ({ page }) => {
-    await loginPage.login(users.standard.username, '');
-
-    await expect(loginPage.errorMessage).toContainText(
-      'Password is required'
-    );
-
-    await expect(page).toHaveURL('/');
-  });
-
-  test('should prevent a locked-out user from logging in', async ({ page }) => {
-    await loginPage.login(
-      users.lockedOut.username,
-      users.lockedOut.password
-    );
-
-    await expect(loginPage.errorMessage).toContainText(
-      'Sorry, this user has been locked out'
-    );
-
-    await expect(page).toHaveURL('/');
-  });
+        await expect(loginPage.errorMessage).toContainText(expectedError);
+        await expect(page).toHaveURL('/');
+      });
+    }
+  );
 });
