@@ -8,23 +8,23 @@ This project demonstrates cross-browser UI automation for the SauceDemo e-commer
 
 ## Test Coverage
 
-| Feature | Scenario | Test Type |
-|----------|----------|-----------|
-| Login | Verify that the login form is displayed and usable | Positive |
-| Login | Login with valid credentials | Positive |
-| Login | Display error for invalid credentials | Negative |
-| Login | Display error when the username is empty | Negative |
-| Login | Display error when the password is empty | Negative |
-| Login | Display error for a locked-out user | Negative |
-| Shopping Cart | Add and verify a product in the cart | Positive |
-| Checkout | Complete an end-to-end order | Positive |
-| Checkout | Display error when the first name is empty | Negative |
-| Checkout | Display error when the last name is empty | Negative |
-| Checkout | Display error when the postal code is empty | Negative |
-| Assertions | Verify visibility, editability, attributes, text and URLs | Learning |
-| Locators | Locate elements using role, placeholder, test ID, text and filters | Learning |
-| Fixtures & Hooks | Reuse Page Objects and shared test setup | Learning |
-| Reusable Business Flow | Add multiple products using reusable Page Object methods | Learning |
+| No. | Feature | Scenario | Test Type |
+|:--:|----------|----------|-----------|
+| 1 | Login | Verify that the login form is displayed and usable | Positive |
+| 2 | Login | Login with valid credentials | Positive |
+| 3 | Login | Display error for invalid credentials | Negative |
+| 4 | Login | Display error when the username is empty | Negative |
+| 5 | Login | Display error when the password is empty | Negative |
+| 6 | Login | Display error for a locked-out user | Negative |
+| 7 | Shopping Cart | Add and verify a product in the cart | Positive |
+| 8 | Checkout | Complete an end-to-end order | Positive |
+| 9 | Checkout | Display error when the first name is empty | Negative |
+| 10 | Checkout | Display error when the last name is empty | Negative |
+| 11 | Checkout | Display error when the postal code is empty | Negative |
+| 12 | Assertions | Verify visibility, editability, attributes, text and URLs | Learning |
+| 13 | Locators | Locate elements using role, placeholder, test ID, text and filters | Learning |
+| 14 | Fixtures & Hooks | Reuse Page Objects and shared test setup | Learning |
+| 15 | Advanced POM | Reusable business flow using Page Object methods | Learning |
 
 The framework currently contains:
 
@@ -57,18 +57,29 @@ The framework currently contains:
 
 ## Learning Progress
 
-| Lesson | Topic | Status |
-|----------|-------------------------------|-----------|
-| 1 | First Playwright Automation | ✅ Completed |
-| 2 | Project Structure | ✅ Completed |
-| 3 | Page Object Model | ✅ Completed |
-| 4 | Test Data | ✅ Completed |
-| 5 | Gherkin Feature Files | ✅ Completed |
-| 6 | Multi-page Flow | ✅ Completed |
-| 7 | Assertions | ✅ Completed |
-| 8 | Locator Deep Dive | ✅ Completed |
-| 9 | Fixtures & Hooks | ✅ Completed |
-| 10 | Advanced POM & Reusable Methods | ✅ Completed |
+| No. | Lesson | Topic | Status |
+|:--:|------------------------------|-----------------------------------------------|:------:|
+| 1 | Lesson 1 | First Playwright Automation | ✅ Completed |
+| 2 | Lesson 2 | Project Structure | ✅ Completed |
+| 3 | Lesson 3 | Page Object Model (POM) | ✅ Completed |
+| 4 | Lesson 4 | Test Data Management | ✅ Completed |
+| 5 | Lesson 5 | Gherkin Feature Files | ✅ Completed |
+| 6 | Lesson 6 | Multi-Page Flow | ✅ Completed |
+| 7 | Lesson 7 | Playwright Assertions | ✅ Completed |
+| 8 | Lesson 8 | Playwright Locators Deep Dive | ✅ Completed |
+| 9 | Lesson 9 | Fixtures & Hooks | ✅ Completed |
+| 10 | Lesson 10 | Advanced POM & Reusable Methods | ✅ Completed |
+| 11 | Lesson 11 | Data-Driven Testing (DDT) | ✅ Completed |
+| 12 | Lesson 12 | API Testing | ⏳ Next |
+| 13 | Lesson 13 | Database Validation | 🔒 Upcoming |
+| 14 | Lesson 14 | Network Interception | 🔒 Upcoming |
+| 15 | Lesson 15 | Authentication State | 🔒 Upcoming |
+| 16 | Lesson 16 | Parallel Execution | 🔒 Upcoming |
+| 17 | Lesson 17 | Cross-Browser Testing | 🔒 Upcoming |
+| 18 | Lesson 18 | CI/CD Pipeline | 🔒 Upcoming |
+| 19 | Lesson 19 | Playwright Reporting | 🔒 Upcoming |
+| 20 | Lesson 20 | Visual Testing | 🔒 Upcoming |
+| 21 | Lesson 21 | Final Capstone Project | 🔒 Upcoming |
 
 ---
 

@@ -25,4 +25,10 @@ export const invalidLoginCases = [
     password: users.lockedOut.password,
     expectedError: 'Sorry, this user has been locked out',
   },
+  {
+    name: 'standard user with incorrect password',
+    username: users.standard.username,
+    password: 'wrong_password',
+    expectedError: 'Username and password do not match',
+  },
 ];
