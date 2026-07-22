@@ -1,14 +1,14 @@
 import { type Locator, type Page } from '@playwright/test';
+import { BasePage } from './base.page';
 
-export class InventoryPage {
-  readonly page: Page;
+export class InventoryPage extends BasePage {
   readonly productsTitle: Locator;
   readonly products: Locator;
   readonly cartBadge: Locator;
   readonly cartLink: Locator;
 
   constructor(page: Page) {
-    this.page = page;
+    super(page);
 
     this.productsTitle = page.getByText('Products', {
       exact: true,
