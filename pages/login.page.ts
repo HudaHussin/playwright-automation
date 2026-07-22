@@ -6,7 +6,6 @@ export class LoginPage {
   readonly passwordInput: Locator;
   readonly loginButton: Locator;
   readonly errorMessage: Locator;
-  readonly productsTitle: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -16,9 +15,6 @@ export class LoginPage {
       name: 'Login',
     });
     this.errorMessage = page.getByTestId('error');
-    this.productsTitle = page.getByText('Products', {
-      exact: true,
-    });
   }
 
   async goto(): Promise<void> {

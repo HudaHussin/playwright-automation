@@ -4,6 +4,7 @@ End-to-end test automation framework built with Playwright and TypeScript.
 
 This project demonstrates cross-browser UI automation for the SauceDemo e-commerce application using Page Object Model, custom Playwright fixtures, centralized test data, data-driven testing and continuous integration with GitHub Actions.
 
+
 ## Test Coverage
 
 | Feature | Scenario | Test Type |
@@ -19,6 +20,9 @@ This project demonstrates cross-browser UI automation for the SauceDemo e-commer
 | Checkout | Display error when the first name is empty | Negative |
 | Checkout | Display error when the last name is empty | Negative |
 | Checkout | Display error when the postal code is empty | Negative |
+| Assertions | Verify visibility, editability, attributes, text and URLs | Learning |
+| Locators | Locate elements using role, placeholder, test ID, text and filters | Learning |
+| Fixtures and Hooks | Reuse Page Objects and shared test setup | Learning |
 
 The suite contains:
 
@@ -28,18 +32,38 @@ The suite contains:
 = 33 cross-browser test executions
 ```
 
+
 ## Framework Features
 
 - End-to-end UI testing with Playwright
 - TypeScript for type safety
 - Page Object Model for reusable locators and actions
 - Custom fixtures for automatic Page Object setup
+- Test hooks for reusable test setup
 - Centralized test data
 - Data-driven positive and negative testing
+- Playwright auto-waiting and retrying assertions
+- User-facing and test ID locator strategies
 - Gherkin feature documentation
 - Cross-browser testing
 - Playwright HTML reporting
 - Continuous integration with GitHub Actions
+
+
+## Learning Progress
+
+| Lesson | Topic | Status |
+|---|---|---|
+| 1 | First Playwright automation | Completed |
+| 2 | Project structure and cleanup | Completed |
+| 3 | Page Object Model | Completed |
+| 4 | Centralized test data | Completed |
+| 5 | Gherkin feature documentation | Completed |
+| 6 | Multi-page end-to-end flow | Completed |
+| 7 | Playwright assertions | Completed |
+| 8 | Locator deep dive | Completed |
+| 9 | Custom fixtures and test hooks | Completed |
+
 
 ## Tech Stack
 
@@ -52,6 +76,7 @@ The suite contains:
 - Gherkin
 - GitHub Actions
 - Chromium, Firefox and WebKit
+
 
 ## Project Structure
 
@@ -85,6 +110,7 @@ playwright-automation/
 └── README.md
 ```
 
+
 ## How the Framework Works
 
 ```mermaid
@@ -97,6 +123,7 @@ flowchart TD
     B --> G["Assertions and test results"]
 ```
 
+
 ## Prerequisites
 
 Install:
@@ -104,6 +131,7 @@ Install:
 - Node.js
 - npm
 - Git
+
 
 ## Installation
 
@@ -115,6 +143,7 @@ cd playwright-automation
 npm ci
 npx playwright install
 ```
+
 
 ## Running Tests
 
@@ -154,11 +183,13 @@ View the latest HTML report:
 npm run report
 ```
 
+
 ## Continuous Integration
 
 GitHub Actions automatically runs the complete cross-browser test suite for every push and pull request to the `main` branch.
 
 The Playwright HTML report is uploaded as a workflow artifact and retained for 30 days.
+
 
 ## Author
 

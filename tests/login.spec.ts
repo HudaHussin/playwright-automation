@@ -7,22 +7,16 @@ test.describe('SauceDemo Login', () => {
     await loginPage.goto();
   });
 
-  test('should display a usable login form', async ({ loginPage }) => {
+  test('should display the login page', async ({ loginPage }) => {
     await expect(loginPage.usernameInput).toBeVisible();
-    await expect(loginPage.usernameInput).toBeEditable();
-
-    await expect(loginPage.passwordInput).toHaveAttribute(
-      'type',
-      'password'
-    );
-
+    await expect(loginPage.passwordInput).toBeVisible();
     await expect(loginPage.loginButton).toBeVisible();
-    await expect(loginPage.loginButton).toBeEnabled();
   });
 
   test('should allow a valid user to log in', async ({
     page,
     loginPage,
+    inventoryPage,
   }) => {
     await loginPage.login(
       users.standard.username,
@@ -30,19 +24,20 @@ test.describe('SauceDemo Login', () => {
     );
 
     await expect(page).toHaveURL(/inventory/);
-    await expect(loginPage.productsTitle).toBeVisible();
+    await expect(inventoryPage.productsTitle).toBeVisible();
   });
 
   invalidLoginCases.forEach(
     ({ name, username, password, expectedError }) => {
-      test(`should display the correct error for ${name}`, async ({
-        page,
+      test(`should display an error for ${name}`, async ({
         loginPage,
       }) => {
         await loginPage.login(username, password);
 
-        await expect(loginPage.errorMessage).toContainText(expectedError);
-        await expect(page).toHaveURL('/');
+        await expect(loginPage.errorMessage).toBeVisible();
+        await expect(loginPage.errorMessage).toContainText(
+          expectedError
+        );
       });
     }
   );
