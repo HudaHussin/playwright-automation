@@ -23,6 +23,7 @@ This project demonstrates cross-browser UI automation for the SauceDemo e-commer
 | Assertions | Verify visibility, editability, attributes, text and URLs | Learning |
 | Locators | Locate elements using role, placeholder, test ID, text and filters | Learning |
 | Fixtures and Hooks | Reuse Page Objects and shared test setup | Learning |
+| Reusable Business Flow | Add multiple products using a reusable Page Object method | Learning |
 
 The suite contains:
 

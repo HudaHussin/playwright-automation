@@ -9,22 +9,42 @@ export class InventoryPage {
 
   constructor(page: Page) {
     this.page = page;
+
     this.productsTitle = page.getByText('Products', {
       exact: true,
     });
+
     this.products = page.getByTestId('inventory-item');
-    this.cartBadge = page.getByTestId('shopping-cart-badge');
-    this.cartLink = page.getByTestId('shopping-cart-link');
+
+    this.cartBadge = page.getByTestId(
+      'shopping-cart-badge'
+    );
+
+    this.cartLink = page.getByTestId(
+      'shopping-cart-link'
+    );
   }
 
-  async addProductToCart(productName: string): Promise<void> {
+  async addProductToCart(
+    productName: string
+  ): Promise<void> {
     const product = this.products.filter({
       hasText: productName,
     });
 
     await product
-      .getByRole('button', { name: 'Add to cart' })
+      .getByRole('button', {
+        name: 'Add to cart',
+      })
       .click();
+  }
+
+  async addProducts(
+    productNames: string[]
+  ): Promise<void> {
+    for (const productName of productNames) {
+      await this.addProductToCart(productName);
+    }
   }
 
   async openCart(): Promise<void> {
