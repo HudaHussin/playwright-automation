@@ -1303,7 +1303,7 @@ The framework follows an incremental development approach. Each release introduc
 
 # 👨‍💻 Author
 
-## Rabiatul Huda Hussin
+## Huda Hussin
 
 **Quality Engineering Leader | QA Lead | Test Automation | Release Management | Digital Banking | Enterprise Quality Engineering**
 
