@@ -1319,7 +1319,7 @@ This repository represents my continuous journey in designing, implementing and 
 
 | Platform | Link |
 |----------|------|
-| 💼 LinkedIn | https://www.linkedin.com/in/hudahussin |
+| 💼 LinkedIn | https://www.linkedin.com/in/rabiatulhuda |
 | 💻 GitHub | https://github.com/HudaHussin |
 
 ---
